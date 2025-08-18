@@ -1,20 +1,25 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: br-cnes-hub-api
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:cnes}
-    username: ${DB_USER:postgres}
-    password: ${DB_PASSWORD:postgres}
+    url: jdbc:postgresql://localhost:5432/cneshub
+    username: cnes
+    password: cnes
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: none
-  cache:
-    type: caffeine
-    caffeine:
-      spec: maximumSize=1000,expireAfterWrite=600s
+      ddl-auto: validate
+    properties:
+      hibernate.jdbc.batch_size: 500
+      hibernate.order_inserts: true
+      hibernate.order_updates: true
   flyway:
     enabled: true
+  cache:
+    type: caffeine
 
 management:
   endpoints:
@@ -24,3 +29,8 @@ management:
   endpoint:
     health:
       show-details: never
+
+cneshub:
+  security:
+    apiKeyEnabled: false
+    apiKey: trocar-em-producao
