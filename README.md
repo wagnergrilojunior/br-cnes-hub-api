@@ -31,3 +31,20 @@ Tudo com **Java 21 + Spring Boot** e foco em **desempenho e previsibilidade**.
 ---
 
 ## 🏗️ Arquitetura (visão)
+
+## 📦 Estrutura de Pacotes
+- `br.com.cneshub.api` – controllers REST
+- `br.com.cneshub.core` – entidades, serviços e repositórios
+- `br.com.cneshub.ingestor` – importação de dados CNES
+- `br.com.cneshub.normalizer` – processamento/ETL
+- `br.com.cneshub.scheduler` – tarefas agendadas
+
+## 🛠️ Desenvolvimento
+Requisitos: Java 21 e Maven.
+
+```bash
+mvn spring-boot:run
+```
+
+## 📄 Licença
+Distribuído sob a [MIT License](LICENSE).
