@@ -35,6 +35,23 @@ cneshub:
     apiKeyEnabled: false
     apiKey: trocar-em-producao
   ingest:
-    baseUrl: https://dados.gov.br
+    baseUrl: https://opendatasus.saude.gov.br/api/3/action
     datasets:
       estabelecimentos: RESOURCE_ID
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      ckan:
+        sliding-window-size: 20
+        failure-rate-threshold: 50
+  retry:
+    instances:
+      ckan:
+        max-attempts: 3
+        wait-duration: 500ms
+  ratelimiter:
+    instances:
+      ckan:
+        limit-for-period: 10
+        limit-refresh-period: 1s
