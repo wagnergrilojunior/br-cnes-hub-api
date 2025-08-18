@@ -34,3 +34,7 @@ cneshub:
   security:
     apiKeyEnabled: false
     apiKey: trocar-em-producao
+  ingest:
+    baseUrl: https://dados.gov.br
+    datasets:
+      estabelecimentos: RESOURCE_ID
