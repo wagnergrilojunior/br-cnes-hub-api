@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.cneshub.core.dto.PackageListResponse;
 import br.com.cneshub.core.service.CnesService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
@@ -19,13 +19,13 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/catalog")
 @RequiredArgsConstructor
 @Validated
-@Api(tags = "Catálogo")
+@Tag(name = "Catálogo")
 public class CatalogController {
 
     private final CnesService service;
 
     @GetMapping("/packages")
-    @ApiOperation(value = "Lista pacotes", notes = "Retorna lista de datasets do CKAN")
+    @Operation(summary = "Lista pacotes", description = "Retorna lista de datasets do CKAN")
     public ResponseEntity<PackageListResponse> listarPacotes(
             @RequestParam(defaultValue = "0") @Min(0) int page,
             @RequestParam(defaultValue = "10") @Min(1) @Max(200) int size,
