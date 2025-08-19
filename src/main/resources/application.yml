@@ -7,8 +7,6 @@ spring:
 springdoc:
   api-docs:
     path: /v1/api-docs
-  swagger-ui:
-    url: /v1/api-docs
 
 cneshub:
   ingest:
