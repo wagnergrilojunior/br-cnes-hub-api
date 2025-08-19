@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class OpenApiConfig {
 
     @Bean
-    public GroupedOpenApi api() {
+    GroupedOpenApi api() {
         return GroupedOpenApi.builder()
                 .group("cneshub")
                 .pathsToMatch("/api/**")
