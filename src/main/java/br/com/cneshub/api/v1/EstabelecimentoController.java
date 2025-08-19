@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import br.com.cneshub.core.service.EstabelecimentoService;
 import br.com.cneshub.core.dto.CkanEnvelope;
 import br.com.cneshub.core.dto.EstabelecimentoDTO;
@@ -15,11 +18,13 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
+@Tag(name = "Estabelecimentos")
 public class EstabelecimentoController {
 
     private final EstabelecimentoService service;
 
     @GetMapping("/estabelecimentos")
+    @Operation(summary = "Lista estabelecimentos", description = "Retorna lista paginada de estabelecimentos do CNES")
     public ResponseEntity<?> listar(
             @RequestParam(required = false) String uf,
             @RequestParam(required = false) String municipio,
