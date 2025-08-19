@@ -1,8 +1,6 @@
 spring:
   application:
     name: br-cnes-hub-api
-  cache:
-    type: caffeine
   main:
     web-application-type: servlet
 
@@ -11,8 +9,6 @@ cneshub:
     baseUrl: https://opendatasus.saude.gov.br/api/3/action
     datasets:
       estabelecimentos: <RESOURCE_ID>
-  cache:
-    ttl: 5m
   security:
     apiKeyEnabled: false
     apiKey: trocar-em-producao

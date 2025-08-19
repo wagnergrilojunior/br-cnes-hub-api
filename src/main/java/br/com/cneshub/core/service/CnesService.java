@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +18,6 @@ public class CnesService {
 
     private final CkanClient client;
 
-    @Cacheable(cacheNames = "ckan:package_list", key = "T(java.util.Objects).hash(#page,#size,#q)")
     public PackageListResponse listarPacotes(int page, int size, @Nullable String q) {
         List<String> packages = client.packageList().block();
         if (packages == null) {
