@@ -1,8 +1,5 @@
 package br.com.cneshub.api.v1;
 
-import java.util.concurrent.TimeUnit;
-
-import org.springframework.http.CacheControl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,8 +31,7 @@ public class CatalogController {
             @RequestParam(defaultValue = "10") @Min(1) @Max(200) int size,
             @RequestParam(required = false) String q) {
         PackageListResponse response = service.listarPacotes(page, size, q);
-        CacheControl cache = CacheControl.maxAge(60, TimeUnit.SECONDS).cachePublic();
-        return ResponseEntity.ok().cacheControl(cache).body(response);
+        return ResponseEntity.ok().body(response);
     }
 }
 

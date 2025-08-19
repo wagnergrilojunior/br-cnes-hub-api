@@ -1,6 +1,5 @@
 package br.com.cneshub.core;
 
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import br.com.cneshub.client.CkanClient;
@@ -19,7 +18,6 @@ public class EstabelecimentoService {
 
     private final CkanClient client;
 
-    @Cacheable("estabelecimentos")
     @CircuitBreaker(name = "ckan")
     @Retry(name = "ckan")
     @RateLimiter(name = "ckan")

@@ -1,9 +1,5 @@
 package br.com.cneshub.api.v1;
 
-import java.time.Duration;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.CacheControl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +19,6 @@ public class EstabelecimentoController {
 
     private final EstabelecimentoService service;
 
-    @Value("${cneshub.cache.ttl}")
-    private Duration cacheTtl;
-
     @GetMapping("/estabelecimentos")
     public ResponseEntity<?> listar(
             @RequestParam(required = false) String uf,
@@ -37,11 +30,10 @@ public class EstabelecimentoController {
             @RequestParam(defaultValue = "false") boolean raw) {
 
         CkanEnvelope<EstabelecimentoDTO> envelope = service.buscar(uf, municipio, tipo, page, size, q);
-        CacheControl cache = CacheControl.maxAge(cacheTtl);
         if (raw) {
-            return ResponseEntity.ok().cacheControl(cache).body(envelope);
+            return ResponseEntity.ok(envelope);
         }
         PageResponse<EstabelecimentoDTO> pagina = service.toPage(envelope, page, size);
-        return ResponseEntity.ok().cacheControl(cache).body(pagina);
+        return ResponseEntity.ok(pagina);
     }
 }
