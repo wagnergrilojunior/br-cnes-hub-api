@@ -1,4 +1,4 @@
-package br.com.cneshub.core;
+package br.com.cneshub.core.service;
 
 import org.springframework.stereotype.Service;
 

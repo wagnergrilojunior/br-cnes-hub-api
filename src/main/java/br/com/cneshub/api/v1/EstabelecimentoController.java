@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.cneshub.core.EstabelecimentoService;
+import br.com.cneshub.core.service.EstabelecimentoService;
 import br.com.cneshub.core.dto.CkanEnvelope;
 import br.com.cneshub.core.dto.EstabelecimentoDTO;
 import br.com.cneshub.core.dto.PageResponse;
