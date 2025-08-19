@@ -34,13 +34,15 @@ public class CkanClient {
         if (municipio != null) filtros.put("municipio", municipio);
         if (tipo != null) filtros.put("co_tipo_estabelecimento", tipo);
 
-        String filtrosJson = null;
+        final String filtrosJson;
         if (!filtros.isEmpty()) {
             try {
                 filtrosJson = mapper.writeValueAsString(filtros);
             } catch (JsonProcessingException e) {
                 throw new IllegalArgumentException("Erro ao serializar filtros", e);
             }
+        } else {
+            filtrosJson = null;
         }
 
         return webClient.get()
