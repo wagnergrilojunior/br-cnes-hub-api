@@ -11,7 +11,9 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
 import io.github.resilience4j.ratelimiter.RequestNotPermitted;
 import jakarta.validation.ConstraintViolationException;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestControllerAdvice
 public class ApiExceptionHandler {
 
@@ -28,6 +30,7 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler({ WebClientResponseException.class, CallNotPermittedException.class, Exception.class })
     public ResponseEntity<String> handleBadGateway(Exception ex) {
+        log.error("Erro ao consultar serviço upstream", ex);
         return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body("Upstream error");
     }
 }
