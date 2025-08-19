@@ -46,5 +46,8 @@ Requisitos: Java 21 e Maven.
 mvn spring-boot:run
 ```
 
+## 📚 Documentação
+Após iniciar a aplicação, a especificação OpenAPI pode ser acessada em `/v1/api-docs`.
+
 ## 📄 Licença
 Distribuído sob a [MIT License](LICENSE).
