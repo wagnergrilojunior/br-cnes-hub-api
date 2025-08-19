@@ -27,9 +27,10 @@
 		<tag/>
 		<url/>
 	</scm>
-	<properties>
-		<java.version>21</java.version>
-	</properties>
+        <properties>
+                <java.version>21</java.version>
+                <resilience4j.version>2.2.0</resilience4j.version>
+        </properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -52,10 +53,20 @@
 	    </dependency>
 	
             <!-- Resilience4j para tolerância a falhas -->
-            <dependency>
+             <dependency>
               <groupId>io.github.resilience4j</groupId>
               <artifactId>resilience4j-spring-boot3</artifactId>
-              <version>2.3.0</version>
+              <version>${resilience4j.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>io.github.resilience4j</groupId>
+              <artifactId>resilience4j-circuitbreaker</artifactId>
+              <version>${resilience4j.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>io.github.resilience4j</groupId>
+              <artifactId>resilience4j-ratelimiter</artifactId>
+              <version>${resilience4j.version}</version>
             </dependency>
 
             <!-- Documentação OpenAPI/Swagger -->
