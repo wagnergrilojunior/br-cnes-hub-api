@@ -9,7 +9,7 @@ import org.springframework.core.Ordered;
 public class SecurityConfig {
 
     @Bean
-    public FilterRegistrationBean<ApiKeyFilter> apiKeyFilter(ApiKeyFilter filter) {
+    public FilterRegistrationBean<ApiKeyFilter> apiKeyFilterRegistration(ApiKeyFilter filter) {
         FilterRegistrationBean<ApiKeyFilter> registration = new FilterRegistrationBean<>(filter);
         registration.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return registration;
