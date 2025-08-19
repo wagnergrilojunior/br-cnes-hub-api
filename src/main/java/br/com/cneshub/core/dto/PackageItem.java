@@ -1,6 +1,7 @@
 package br.com.cneshub.core.dto;
 
-import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,10 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Schema(description = "Item de pacote")
+@ApiModel(description = "Item de pacote")
 public class PackageItem {
 
-    @Schema(description = "Nome do pacote")
+    @ApiModelProperty(value = "Nome do pacote")
     private String name;
 }
 
